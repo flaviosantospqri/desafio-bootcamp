@@ -1,25 +1,9 @@
 package br.com.flavio.desafio.dominio.model;
 
-public class Curso {
-    private String titulo;
-    private String descricao;
+public class Curso extends Conteudo{
+
     private int cargaHoraria;
 
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
 
     public int getCargaHoraria() {
         return cargaHoraria;
@@ -29,22 +13,27 @@ public class Curso {
         this.cargaHoraria = cargaHoraria;
     }
 
-    @Override
-    public String toString() {
-        return "Curso{" +
-                "titulo='" + titulo + '\'' +
-                ", descricao='" + descricao + '\'' +
-                ", cargaHoraria=" + cargaHoraria +
-                '}';
-    }
 
     public Curso(String titulo, String descricao, int cargaHoraria) {
-        this.titulo = titulo;
-        this.descricao = descricao;
+        super.setTitulo(titulo);
+        super.setDescricao(descricao);
         this.cargaHoraria = cargaHoraria;
     }
 
     public Curso() {
+    }
+
+    @Override
+    public double calcularXp() {
+        return XP_PADRAO * this.cargaHoraria;
+    }
+    @Override
+    public String toString() {
+        return "Curso{" +
+                "titulo='" + super.getTitulo() + '\'' +
+                ", descricao='" + super.getDescricao() + '\'' +
+                ", cargaHoraria=" + cargaHoraria +
+                '}';
     }
 }
 
